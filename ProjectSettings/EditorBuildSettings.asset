@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 65c28dbaa665d664ea12e4a995f915c5
+  - enabled: 0
+    path: Assets/Field - Complete Main Menu (Lite)/Free Demo.unity
+    guid: 0076590dd1830ff46a78b670ad95ae79
   m_configObjects: {}

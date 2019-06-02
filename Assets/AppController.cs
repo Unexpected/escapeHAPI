@@ -13,29 +13,20 @@ using ZXing.QrCode;
 
 public class AppController : MonoBehaviour
 {
+	public GameObject adminButton; 
+	public List<GameObject> interfaces; 
 
 	public Text debugText;
-
-	public GameObject qr1; 
-	public GameObject qr2; 
-	public GameObject qr3; 
 
 	// qr code scanner
 	public GameObject qrCodeScanButton; 
 	public GameObject cameraPlane; 
-	public GameObject closeButton; 
 	private WebCamTexture camTexture;
 	private bool cameraOn = false;
 
 
-	public GameObject adminButton; 
 	public GameObject inputPassword; 
 	public GameObject inputPasswordButton; 
-
-	public GameObject codeLogoButton; 
-	public GameObject codeLogoCloseButton; 
-	public GameObject codeLogoImage; 
-
 	public GameObject winPanel; 
 
     // Start is called before the first frame update
@@ -43,14 +34,21 @@ public class AppController : MonoBehaviour
     {
 		#if PLATFORM_ANDROID
 		Application.RequestUserAuthorization(UserAuthorization.WebCam);
+		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		#endif
 		debugText.text = "App Started";
 		Debug.Log ("Script has been started");
 
+		adminButton.GetComponent<Button>().interactable = false; 
+		adminButton.SetActive(false); 
+
+		foreach (GameObject itf in interfaces) {
+			itf.SetActive(false);
+		}
 		deactivateCamera();
-		HideCodeLogo();
-		HideAdminPanel();
-		HideWinPanel(); 
+		//HideCodeLogo();
+		//HideAdminPanel();
+		//HideWinPanel(); 
 	}
 
     // Update is called once per frame
@@ -67,6 +65,7 @@ public class AppController : MonoBehaviour
 				var result = barcodeReader.Decode(camTexture.GetPixels32(), camTexture.width, camTexture.height);
 				if (result != null) {
 					ReadSomething(result.Text);
+					CheckNetwork();
 				}
 			} catch(Exception ex) { Debug.LogWarning (ex.Message); }
 		}
@@ -76,23 +75,55 @@ public class AppController : MonoBehaviour
 		Debug.Log("DECODED TEXT FROM QR: " + textFromQrCode);
 		debugText.text = textFromQrCode;
 
-		if (!qr1.GetComponent<Button>().interactable) {
-			qr1.GetComponent<Button>().interactable = true; 
+		if ("code_01" == textFromQrCode) {
+			interfaces[0].SetActive(true);
+			debugText.text = "ITF-01 activated";
 			return;
 		}
-
-		if (!qr2.GetComponent<Button>().interactable) {
-			qr2.GetComponent<Button>().interactable = true; 
+		if ("code_02" == textFromQrCode) {
+			interfaces[1].SetActive(true);
+			debugText.text = "ITF-02 activated";
 			return;
 		}
-
-		if (!qr3.GetComponent<Button>().interactable) {
-			qr3.GetComponent<Button>().interactable = true; 
+		if ("code_03" == textFromQrCode) {
+			interfaces[2].SetActive(true);
+			debugText.text = "ITF-03 activated";
 			return;
 		}
+		if ("code_04" == textFromQrCode) {
+			interfaces[3].SetActive(true);
+			debugText.text = "ITF-04 activated";
+			return;
+		}
+		if ("code_05" == textFromQrCode) {
+			interfaces[4].SetActive(true);
+			debugText.text = "ITF-05 activated";
+			return;
+		}
+		if ("code_06" == textFromQrCode) {
+			interfaces[5].SetActive(true);
+			debugText.text = "ITF-06 activated";
+			return;
+		}
+		debugText.text = textFromQrCode + " is not a valid QR Code";
+	}
 
-		debugText.text = "No more QR Codes needed !";
+	public void CheckNetwork() {
+		foreach (GameObject itf in interfaces) {
+			if (!itf.activeSelf)
+				return;
+		}
+		adminButton.GetComponent<Button>().interactable = true; 
+		adminButton.SetActive(true); 
+		debugText.text = "Network activated - accessing admin panel";
+	}
 
+	public void toggleCamera() {
+		if (cameraOn) {
+			deactivateCamera();
+		} else {
+			activateCamera();
+		}
 	}
 
 	public void deactivateCamera() {
@@ -103,9 +134,6 @@ public class AppController : MonoBehaviour
 		}
 		cameraPlane.GetComponent<Renderer>().enabled = false;
 		cameraPlane.SetActive(false);
-
-		//closeButton.GetComponent<Renderer>().enabled = false;
-		closeButton.SetActive(false);
 
 		cameraOn = false;
 	}
@@ -119,38 +147,7 @@ public class AppController : MonoBehaviour
 		cameraPlane.GetComponent<Renderer>().enabled = true;
 		cameraPlane.GetComponent<Renderer>().material.mainTexture = camTexture;
 
-		closeButton.SetActive(true);
 		cameraOn = true; 
-	}
-
-	public void ShowCodeLogo() {
-		Debug.Log("show code logo");
-
-		codeLogoButton.GetComponent<Button>().interactable = false; 
-
-		codeLogoCloseButton.SetActive(true); 
-		codeLogoImage.SetActive(true);
-	}
-
-	public void HideCodeLogo() {
-		codeLogoButton.GetComponent<Button>().interactable = true; 
-		codeLogoCloseButton.SetActive(false); 
-		codeLogoImage.SetActive(false);
-	}
-
-	private void HideAdminPanel() {
-		if (inputPassword.activeSelf) {
-			ToggleAdminPanel();
-		}
-	}
-
-	public void ToggleAdminPanel() {
-		inputPassword.SetActive(!inputPassword.activeSelf);
-		inputPasswordButton.SetActive(!inputPasswordButton.activeSelf);
-	}
-
-	public void HideWinPanel() {
-		winPanel.SetActive(false);
 	}
 
 	public void TestAdminPassword() {

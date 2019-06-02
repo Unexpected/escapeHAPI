@@ -54,8 +54,32 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\AppController.cs" />
+     <Compile Include="Assets\Field - Complete Main Menu (Lite)\Scripts\AnimatorDisableHelper.cs" />
+     <Compile Include="Assets\Field - Complete Main Menu (Lite)\Scripts\ChatUIManager.cs" />
+     <Compile Include="Assets\Field - Complete Main Menu (Lite)\Scripts\CustomInputField.cs" />
+     <Compile Include="Assets\Field - Complete Main Menu (Lite)\Scripts\DropdownSubMenu.cs" />
+     <Compile Include="Assets\Field - Complete Main Menu (Lite)\Scripts\ExitToSystem.cs" />
+     <Compile Include="Assets\Field - Complete Main Menu (Lite)\Scripts\LayoutGroupPositionFix.cs" />
+     <Compile Include="Assets\Field - Complete Main Menu (Lite)\Scripts\ListContentSizeFix.cs" />
+     <Compile Include="Assets\Field - Complete Main Menu (Lite)\Scripts\ListTabsButton.cs" />
+     <Compile Include="Assets\Field - Complete Main Menu (Lite)\Scripts\ListTabsManager.cs" />
+     <Compile Include="Assets\Field - Complete Main Menu (Lite)\Scripts\ModelDissolve.cs" />
+     <Compile Include="Assets\Field - Complete Main Menu (Lite)\Scripts\NewsPanelManager.cs" />
+     <Compile Include="Assets\Field - Complete Main Menu (Lite)\Scripts\ObjectDisableHelper.cs" />
+     <Compile Include="Assets\Field - Complete Main Menu (Lite)\Scripts\RadialSlider.cs" />
+     <Compile Include="Assets\Field - Complete Main Menu (Lite)\Scripts\SettingsManager.cs" />
+     <Compile Include="Assets\Field - Complete Main Menu (Lite)\Scripts\SliderManager.cs" />
+     <Compile Include="Assets\Field - Complete Main Menu (Lite)\Scripts\SplashScreenManager.cs" />
+     <Compile Include="Assets\Field - Complete Main Menu (Lite)\Scripts\SwitchManager.cs" />
+     <Compile Include="Assets\Field - Complete Main Menu (Lite)\Scripts\SwitchToMainPanels.cs" />
+     <Compile Include="Assets\Field - Complete Main Menu (Lite)\Scripts\ToggleManager.cs" />
+     <Compile Include="Assets\Field - Complete Main Menu (Lite)\Scripts\TopPanelButton.cs" />
+     <Compile Include="Assets\Field - Complete Main Menu (Lite)\Scripts\TopPanelManager.cs" />
+     <Compile Include="Assets\Field - Complete Main Menu (Lite)\Scripts\UIElementInFront.cs" />
      <Compile Include="Assets\qrcode.cs" />
      <None Include="Assets\ZXing\zxing.unity.xml" />
+     <None Include="Assets\Field - Complete Main Menu (Lite)\Shaders\Dissolve.shader" />
+     <None Include="Assets\Field - Complete Main Menu (Lite)\Shaders\UI Blur.shader" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>E:/Projets/Boulot/EscapeHAPIApp/EscapeHapi/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
@@ -272,6 +296,9 @@
  <Reference Include="UnityEngine.SpatialTracking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
+ <Reference Include="zxing.unity">
+ <HintPath>E:/Projets/Boulot/EscapeHAPIApp/EscapeHapi/Assets/ZXing/zxing.unity.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>E:/Projets/Boulot/EscapeHAPIApp/EscapeHapi/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
@@ -286,9 +313,6 @@
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
  <HintPath>E:/Projets/Boulot/EscapeHAPIApp/EscapeHapi/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
- </Reference>
- <Reference Include="zxing.unity">
- <HintPath>E:/Projets/Boulot/EscapeHAPIApp/EscapeHapi/Assets/ZXing/zxing.unity.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/Program Files/Unity/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
