@@ -152,7 +152,8 @@ public class AppController : MonoBehaviour
 
 	public void TestAdminPassword() {
 		string testedString = inputPassword.GetComponent<InputField>().text;
-		if (testedString == "youpi") {
+		if (testedString == "HUMANITE") {
+			debugText.text = "";
 			ShowWinPanel();
 		} else {
 			debugText.text = "Non, ce n'est pas " + testedString;
