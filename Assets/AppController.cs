@@ -17,6 +17,7 @@ public class AppController : MonoBehaviour
 	public List<GameObject> interfaces; 
 
 	public Text debugText;
+	public Text networkText;
 
 	// qr code scanner
 	public GameObject qrCodeScanButton; 
@@ -73,36 +74,41 @@ public class AppController : MonoBehaviour
 
 	public void ReadSomething(string textFromQrCode) {
 		Debug.Log("DECODED TEXT FROM QR: " + textFromQrCode);
-		debugText.text = textFromQrCode;
 
 		if ("code_01" == textFromQrCode) {
 			interfaces[0].SetActive(true);
-			debugText.text = "ITF-01 activated";
+			debugText.text = "Contournement du Pare-feu. ";
+			networkText.text = "HAPI : \"Serge Godin est le fondateur et président exécutif du Groupe CGI inc. Vous pourrez surement le rencontrer si vous croyez en la vie après l'optimisation ! \"";
 			return;
 		}
 		if ("code_02" == textFromQrCode) {
 			interfaces[1].SetActive(true);
-			debugText.text = "ITF-02 activated";
+			debugText.text = "La base virale VPS a été mise à jour";
+			networkText.text = "HAPI : \"S.A.M. (Security Aware Member) est la mascotte sécurité de CGI. Sa mission est de transmettre aux membres de CGI les bonnes pratiques de Sécurité et ainsi protéger CGI et ses clients. C'est vraiment dommage qu'il soit en RTT aujourd'hui et ne puisse pas vous protéger.\"";
 			return;
 		}
 		if ("code_03" == textFromQrCode) {
 			interfaces[2].SetActive(true);
-			debugText.text = "ITF-03 activated";
+			debugText.text = "Identification des serveurs miroirs";
+			networkText.text =  "HAPI: \"Fondée au Canada en 1976, CGI est dorénavant présent dans plus de 40 pays du monde. Ca en fait des humains à optimiser... qu'est-ce qu'on s'amuse !\"";
 			return;
 		}
 		if ("code_04" == textFromQrCode) {
 			interfaces[3].SetActive(true);
-			debugText.text = "ITF-04 activated";
+			debugText.text = "Localisation du serveur principal";
+			networkText.text = "HAPI: \"L'agence de Lyon fait partie de la BU GRAND EST comportant 1700 membres. on y trouve une cafétéria, une infirmerie, des douches et l'IA la plus joyeuse du monde !\"";
 			return;
 		}
 		if ("code_05" == textFromQrCode) {
 			interfaces[4].SetActive(true);
-			debugText.text = "ITF-05 activated";
+			debugText.text = "Calcul de la clé de chiffrement";
+			networkText.text = "HAPI: \"Les six valeurs fondamentales de CGI définissent la philosophie et les principes auxquels adhère notre entreprise : Partenariat et qualité ; Objectivité et intégrité ; Intrapreneurship et partage ; Respect ; Solidité financière ; Responsabilité sociale. N'oubliez pas de respecter ces valeurs lors de vos derniers instants !\"";
 			return;
 		}
 		if ("code_06" == textFromQrCode) {
 			interfaces[5].SetActive(true);
-			debugText.text = "ITF-06 activated";
+			debugText.text = "Connexion à la base de données";
+			networkText.text = "HAPI: \"CGI a obtenu en 2014 la certification ISO 14001 pour ses 21 bureaux français. Cette certification témoigne de l’engagement de CGI à diminuer son empreinte environnementale. Avec votre extinction, je vise même un bilan carbone positif pour l'année prochaine !\"";
 			return;
 		}
 		debugText.text = textFromQrCode + " is not a valid QR Code";
@@ -115,7 +121,7 @@ public class AppController : MonoBehaviour
 		}
 		adminButton.GetComponent<Button>().interactable = true; 
 		adminButton.SetActive(true); 
-		debugText.text = "Network activated - accessing admin panel";
+		debugText.text = "Réseau activé - menu ADMIN ouvert";
 	}
 
 	public void toggleCamera() {
@@ -152,7 +158,7 @@ public class AppController : MonoBehaviour
 
 	public void TestAdminPassword() {
 		string testedString = inputPassword.GetComponent<InputField>().text;
-		if (testedString == "HUMANITE") {
+		if (testedString.ToUpper() == "HUMANITE") {
 			debugText.text = "";
 			ShowWinPanel();
 		} else {
