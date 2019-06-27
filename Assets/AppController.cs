@@ -47,6 +47,7 @@ public class AppController : MonoBehaviour
 			itf.SetActive(false);
 		}
 		deactivateCamera();
+		interfaces[1].SetActive(true);
 		//HideCodeLogo();
 		//HideAdminPanel();
 		//HideWinPanel(); 
